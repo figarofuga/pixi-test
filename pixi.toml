@@ -1,5 +1,5 @@
 [project]
-channels = ["conda-forge"]
+channels = ["conda-forge", "https://repo.prefix.dev/julia-forge"]
 description = "Add a short description here"
 name = "pixi-test"
 platforms = ["linux-64"]
@@ -16,3 +16,4 @@ seaborn = ">=0.13.2,<0.14"
 polars = ">=1.7.1,<2"
 ipykernel = ">=6.29.5,<7"
 jupyter = ">=1.1.1,<2"
+julia = ">=1.10.4,<2"
