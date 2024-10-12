@@ -1,24 +1,35 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Pixi",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "ghcr.io/prefix-dev/pixi:latest",
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-    "ghcr.io/devcontainers/features/git:1": {}
-  }
+    "name": "my-project",
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+    "build": {
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+      "dockerfile": "Dockerfile",
 
-	// Configure tool-specific properties.
-	// "customizations": {},
+      "context": "..",
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    },
+
+    "customizations": {
+
+      "vscode": {
+
+        "settings": {},
+
+        "extensions": ["ms-python.python", "charliermarsh.ruff", "GitHub.copilot"]
+
+      }
+
+    },
+
+    "features": {
+
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+
+    },
+
+    "mounts": ["source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"],
+
+    "postCreateCommand": "sudo chown vscode .pixi && pixi install"
+
 }
